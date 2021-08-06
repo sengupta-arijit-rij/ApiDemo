@@ -14,9 +14,9 @@ public class Basics {
 		String responseJson="";
 		String key="";
 		
-		RestAssured.baseURI="https://rahulshettyacademy.com";
+		RestAssured.baseURI="";
 		
-		responseJson=given().log().all().queryParam("key","qaclick123").header("Content-Type","application/json")
+		responseJson=given().log().all().queryParam("key","").header("Content-Type","application/json")
 		.body(JsonPayLoad.AddLocation()).when().post("maps/api/place/add/json")
 		.then().log().all().assertThat().statusCode(200).body("scope", equalTo("APP"))
 		.header("server", "Apache/2.4.18 (Ubuntu)").extract().response().asString();
@@ -24,14 +24,14 @@ public class Basics {
 		String address=getResponseValue(responseJson,"address");
 		
 		
-		responseJson=given().log().all().queryParam("key", "qaclick123").header("Content-Type","application/json")
+		responseJson=given().log().all().queryParam("key", "").header("Content-Type","application/json")
 		.body(JsonPayLoad.UpdateLocation(place_id)).when().put("maps/api/place/update/json").then()
 		.log().all().assertThat().statusCode(200).body("msg", equalTo("Address successfully updated"))
 		.extract().response().asString();
 		
 		System.out.println("Initial address= "+ address);
 		
-		responseJson=given().log().all().queryParam("key", "qaclick123").queryParam("place_id", place_id)
+		responseJson=given().log().all().queryParam("key", "").queryParam("place_id", place_id)
 		.when().get("maps/api/place/get/json").then().log().all().assertThat().statusCode(200).extract().response()
 		.asString();
 		System.out.println(getResponseValue(responseJson,"address"));

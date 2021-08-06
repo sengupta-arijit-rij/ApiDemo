@@ -37,7 +37,7 @@ public class JsonPayLoad {
 				"\r\n" + 
 				"\"purchaseAmount\": 910,\r\n" + 
 				"\r\n" + 
-				"\"website\": \"rahulshettyacademy.com\"\r\n" + 
+				"\"website\": \"\"\r\n" + 
 				"\r\n" + 
 				"},\r\n" + 
 				"\r\n" + 
